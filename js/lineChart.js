@@ -214,7 +214,8 @@ d3.custom.lineChart = function module() {
 	                i = bisectDate(_data, x0, 1),
 	                d0 = _data[i - 1],
 	                d1 = _data[i],
-	                d = x0 - d0[d[0]] > d1[d[0]] - x0 ? d1 : d0;
+	                d = x0 - d0[0] > d1[0] - x0 ? d1 : d0;            
+
 
 	            focus.attr("transform", "translate(" + x(d[0]) + "," + y(d[1]) + ")");
 	            //show div
@@ -224,8 +225,8 @@ d3.custom.lineChart = function module() {
 
 	           	d3.select(selection).selectAll(".tooltip")
 	           		.html(tooltip.format(d[1]) + " strikes")
-	           		.style("left", x(d[0]) + margin.left + $(selection).position().left + "px")
-	           		.style("top", y(d[1]) + $(selection).position().top + -20 + "px");
+	           		.style("left", x(d[0]) + margin.left + $(selection).position().left + -margin.right + "px")
+	           		.style("top", y(d[1]) + $(selection).position().top + -25 + "px");
 
 	           	d3.select(selection).selectAll(".tooltip")
 	           		.html(tooltip.format(d[1]) + " " + tooltip.string);
